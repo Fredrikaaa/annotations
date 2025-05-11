@@ -87,6 +87,7 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
+                    <finalName>annotate</finalName> <!-- This will produce annotate.jar -->
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
@@ -116,4 +117,4 @@
             </plugin>
         </plugins>
     </build>
-</project> 
+</project>

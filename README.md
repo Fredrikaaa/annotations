@@ -12,13 +12,13 @@ Annotate documents with CoreNLP
 
 ## Database Schema
 
-The tool expects an SQLite database with a `documents` table structured as follows:
+The program expects an SQLite database with a `documents` table structured as follows:
 
 *   `document_id` (INTEGER, PRIMARY KEY): Unique identifier for the document.
 *   `text` (TEXT): The raw text content of the document.
 *   `timestamp` (TEXT, optional): Timestamp of the document (e.g., "YYYY-MM-DD HH:MM:SS" or "YYYY-MM-DD"). This is used by CoreNLP's SUTime to resolve relative dates if present.
 
-## Building the Tool
+## Building the annotator
 
 1.  Clone this repository 
 2.  Navigate to the root directory of the project 
@@ -27,16 +27,16 @@ The tool expects an SQLite database with a `documents` table structured as follo
     ```bash
     mvn package
     ```
-    This will create a JAR file (e.g., `annotation-tool-1.0-SNAPSHOT.jar`) in the `target/` directory.
+    This will create a JAR file (e.g., `annotate.jar`) in the `target/` directory.
 
-## Running the Tool
+## Running it
 
 Execute the JAR file from your terminal, providing the path to your SQLite database.
 
 **Basic Usage:**
 
 ```bash
-java -jar target/annotation-tool-1.0-SNAPSHOT.jar --database-path /path/to/your/database.db
+java -jar target/annotate.jar --database-path /path/to/your/database.db
 ```
 
 **Command-Line Options:**
@@ -53,7 +53,7 @@ java -jar target/annotation-tool-1.0-SNAPSHOT.jar --database-path /path/to/your/
 **Example with more options:**
 
 ```bash
-java -jar target/annotation-tool-1.0-SNAPSHOT.jar \
+java -jar target/annotate.jar \
      --database-path /data/mydocs.db \
      --threads 8 \
      --batch-size 2000 \
