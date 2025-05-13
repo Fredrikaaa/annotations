@@ -29,7 +29,7 @@ public class AnnotationCLI {
 
         parser.addArgument("-b", "--batch-size")
                 .type(Integer.class)
-                .setDefault(1000) // Default from Annotations.java and original Pipeline.java
+                .setDefault(1000)
                 .help("Number of documents to commit per transaction during annotation (default: 1000).");
 
         parser.addArgument("-l", "--limit")
@@ -47,7 +47,7 @@ public class AnnotationCLI {
             Path dbPath = Paths.get(ns.getString("database_path"));
             int threads = ns.getInt("threads");
             int batchSize = ns.getInt("batch_size");
-            Integer limit = ns.getInt("limit"); // Can be null
+            Integer limit = ns.getInt("limit");
             boolean force = ns.getBoolean("force");
 
             logger.info("Starting annotation process for database: {}", dbPath.toAbsolutePath());

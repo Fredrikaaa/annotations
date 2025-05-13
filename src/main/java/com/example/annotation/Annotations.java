@@ -94,8 +94,8 @@ public class Annotations {
                     
 
                 } catch (SQLException e) {
-                    logger.error("Error during pre-emptive delete for document_id=" + startDocumentId, e);
-                    throw e; // Rethrow to halt processing if cleanup fails
+                    logger.error("Error during delete for document_id=" + startDocumentId, e);
+                    throw e;
                 }
             }
 
@@ -306,9 +306,7 @@ public class Annotations {
             stmt.execute("CREATE INDEX IF NOT EXISTS idx_dep_id ON dependencies (dependency_id)");
             stmt.execute("CREATE INDEX IF NOT EXISTS idx_dep_relation_did_sid_tokens ON dependencies (relation, document_id, sentence_id, head_token, dependent_token)");
             
-            // Assuming 'documents' table exists and this is a good place to ensure its index
-            // If 'documents' table creation is handled elsewhere, this might be redundant or ideally co-located.
-            stmt.execute("CREATE INDEX IF NOT EXISTS idx_doc_id_timestamp ON documents (document_id, timestamp)");
+             stmt.execute("CREATE INDEX IF NOT EXISTS idx_doc_id_timestamp ON documents (document_id, timestamp)");
         }
     }
 
